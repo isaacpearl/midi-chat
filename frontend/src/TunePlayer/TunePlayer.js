@@ -6,7 +6,9 @@ import './TunePlayer.css';
 export default class TunePlayer extends React.Component {
 	render() {
 		return(
-			<span>TunePlayer</span>
+			<div className="tune-player">
+				TunePlayer
+			</div>
 		);
 	}
 }
