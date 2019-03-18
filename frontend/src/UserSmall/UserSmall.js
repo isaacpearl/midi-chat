@@ -8,13 +8,21 @@ import ProfilePicture from '../ProfilePicture/ProfilePicture';
 import TunePlayer from '../TunePlayer/TunePlayer';
 
 export default class UserSmall extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			user: props.user
+		};
+	}
+
 	//TODO: add state and pass id props down to children
 	render() {
 		return(
 			<div className="user-small-container">
 				<span>UserSmall</span>
-				<ProfilePicture/>
-				<UserInfo/>
+				<ProfilePicture image={this.state.user.profilePicture}/>
+				<UserInfo username={this.state.user.username}/>
 				<TunePlayer/>
 			</div>
 		);

@@ -4,8 +4,8 @@ import React from 'react';
 import './ProfilePicture.css';
 
 //TODO: add props to this function
-export default function ProfilePicture() {
+export default function ProfilePicture(props) {
 	return (
-		<span>ProfilePicture</span>
+		<img src={props.image} className="profile-picture"/>
 	);
 }

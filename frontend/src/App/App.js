@@ -21,12 +21,15 @@ class App extends Component {
 
 	render() {
 		console.log("data: " + this.state.info);
-
+		var testUser = {
+			username: "yoshi",
+			profilePicture: "https://pbs.twimg.com/profile_images/1280382213/YoshiProfileONG.png"
+		}
 	
 		return (
 			<div className="App">
 				{this.state.info}
-				<UserSmall/>
+				<UserSmall user={testUser}/>
 			</div>
 		);
 	}
