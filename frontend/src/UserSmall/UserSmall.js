@@ -19,8 +19,7 @@ export default class UserSmall extends React.Component {
 	//TODO: add state and pass id props down to children
 	render() {
 		return(
-			<div className="user-small-container">
-				<span>UserSmall</span>
+			<div className="user-small">
 				<ProfilePicture image={this.state.user.profilePicture}/>
 				<UserInfo username={this.state.user.username}/>
 				<TunePlayer/>

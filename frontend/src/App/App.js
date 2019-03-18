@@ -1,8 +1,8 @@
-//App.js
+//App/App.js
 
 import React, { Component } from 'react';
 import './App.css';
-import UserSmall from '../UserSmall/UserSmall'
+import UserContainer from '../UserContainer/UserContainer';
 
 class App extends Component {
 	constructor(props) {
@@ -21,16 +21,8 @@ class App extends Component {
 
 	render() {
 		console.log("data: " + this.state.info);
-		var testUser = {
-			username: "yoshi",
-			profilePicture: "https://pbs.twimg.com/profile_images/1280382213/YoshiProfileONG.png"
-		}
-	
-		return (
-			<div className="App">
-				{this.state.info}
-				<UserSmall user={testUser}/>
-			</div>
+		return(
+			<UserContainer/>	
 		);
 	}
 }
