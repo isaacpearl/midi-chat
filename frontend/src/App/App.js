@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import './App.css';
+import UserSmall from '../UserSmall/UserSmall'
 
 class App extends Component {
 	constructor(props) {
@@ -25,6 +26,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				{this.state.info}
+				<UserSmall/>
 			</div>
 		);
 	}

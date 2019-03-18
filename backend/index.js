@@ -8,6 +8,7 @@ const db = require('./app/queries');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+//DELETE THIS IN PRODUCTION - this allows all CORS
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -25,5 +26,5 @@ app.put('/users/:id', db.updateUser);
 app.delete('/users/:id', db.deleteUser);
 
 app.listen(port, () => {
-	console.log(`app running on port ${port}.`);
+	console.log(`midi chat backend running on port ${port}.`);
 });
