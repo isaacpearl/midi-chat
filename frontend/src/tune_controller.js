@@ -2,7 +2,7 @@
 
 import Tone from 'tone';
 
-var tuneSynth = new Tone.Synth().toMaster();
+var tuneSynth = new Tone.Synth({oscillator: {type: "sine"}}).toMaster();
 var tuneSequence = new Tone.Sequence
 	(
 	function(time, note) {			

@@ -1,7 +1,7 @@
 /* TunePlayer/TunePlayer.css */
 
 .tune-player > button {
-	background: #8ed5ff;
+	background: #26aeff;
 	color: #ffffff;
 
 	width: 100%;
@@ -9,7 +9,7 @@
 
 	border-radius: 10em;
 	border: transparent;
-	padding: 3em; /* TODO: fix this */
+	padding: 3em; /* TODO: fix this, make it "responsive" like ProfilePicture */
 	font-size: 1rem;
 	text-align: center;
 	
