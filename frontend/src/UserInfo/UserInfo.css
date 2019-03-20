@@ -1,5 +1,13 @@
 /* UserInfo/UserInfo.css */
 
+.user-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-content: center;
+	font-size: 1.5em;
+}
+
 .status-badge {
 }
 
