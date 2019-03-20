@@ -11,11 +11,12 @@ export default class UserContainer extends React.Component {
 
 		//TODO: ask someone about how to handle defaults/pre api return rendering best practices
 		this.state = {
-			user: [{
+			users: [{
 				id: 0,
 				name: "loading name",
 				email: "loading email",
-				avatar: "https://pbs.twimg.com/profile_images/1280382213/YoshiProfileONG.png"
+				avatar: "https://pbs.twimg.com/profile_images/1280382213/YoshiProfileONG.png",
+				status: "away"
 			}] 
 		};
 	}
@@ -23,19 +24,13 @@ export default class UserContainer extends React.Component {
 	componentDidMount() {
 		fetch('http://localhost:3001/users/9')
 			.then(response => response.json())
-			.then(data => this.setState({user: data}));
+			.then(data => this.setState({users: data}));
 	}
 
 	render() {
-		var testUser = {
-			username: "yoshi",
-			profilePicture: "https://pbs.twimg.com/profile_images/1280382213/YoshiProfileONG.png"
-		}
-	
 		return (
 			<div className="user-container">
-				{this.state.user[0].name}
-				<UserSmall user={this.state.user[0]}/>
+				<UserSmall user={this.state.users[0]}/>
 			</div>
 		);
 	}

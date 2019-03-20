@@ -16,7 +16,6 @@ class App extends Component {
 		fetch('http://localhost:3001/')
 			.then(response => response.json())
 			.then(data => this.setState({info: data.info }));
-		console.log('fetched data!');
 	}
 
 	render() {

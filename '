@@ -1,15 +1,10 @@
 /* ProfilePicture/ProfilePicture.css */
 
-.profile-picture > img {
+.img {
 	/*TODO: maybe move this to UserSmall's css for better reusability?*/
-	width: 60%;
-	max-width: 10em;
+	width: 50%;
+	max-width: 7em;
 	border-radius: 50px;
 	border-radius:70%;
-}
-
-.profile-picture {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
+	margin: 1em;
 }

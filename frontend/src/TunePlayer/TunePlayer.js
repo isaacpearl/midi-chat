@@ -15,7 +15,7 @@ export default class TunePlayer extends React.Component {
 	render() {
 		return(
 			<div className="tune-player">
-				TunePlayer
+				<span>TunePlayer</span>
 			</div>
 		);
 	}
