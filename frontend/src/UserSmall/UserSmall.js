@@ -15,13 +15,17 @@ export default class UserSmall extends React.Component {
 			user: props.user
 		};
 	}
+	
+	//TODO: figure out why this doesn't rerender when UserContainer's API calls finish
+	componentDidMount() {
+		this.setState({user: this.props.user});
+	}
 
-	//TODO: add state and pass id props down to children
 	render() {
 		return(
 			<div className="user-small">
-				<ProfilePicture image={this.state.user.profilePicture}/>
-				<UserInfo username={this.state.user.username}/>
+				<ProfilePicture image="https://pbs.twimg.com/profile_images/1280382213/YoshiProfileONG.png"/>
+				<UserInfo username={this.state.user.name}/>
 				<TunePlayer/>
 			</div>
 		);
