@@ -2,6 +2,7 @@
 
 import React from 'react';
 import './TunePlayer.css';
+import Tone from 'tone';
 
 export default class TunePlayer extends React.Component {
 	constructor(props) {
@@ -12,10 +13,16 @@ export default class TunePlayer extends React.Component {
 		};	
 	}
 	
+	playNote() {
+		console.log("playing note!");
+		var synth = new Tone.Synth().toMaster();
+		synth.triggerAttackRelease('C4', '8n');
+	}
+	
 	render() {
 		return(
 			<div className="tune-player">
-				<span>TunePlayer</span>
+				<button onClick={() => this.playNote()}>Play Tune!</button>
 			</div>
 		);
 	}
