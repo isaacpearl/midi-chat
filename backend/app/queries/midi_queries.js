@@ -1,4 +1,4 @@
-// queries/midi_queries.js
+// queries/tune_queries.js
 
 const pool = require('../../config/pool');
 
