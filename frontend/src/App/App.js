@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import UserContainer from '../UserContainer/UserContainer';
+import Accordion from '../Accordion/Accordion';
 
 class App extends Component {
 	constructor(props) {
@@ -20,7 +21,9 @@ class App extends Component {
 
 	render() {
 		return(
-			<UserContainer/>	
+			<div>
+				<UserContainer/>	
+			</div>
 		);
 	}
 }

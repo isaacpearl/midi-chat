@@ -1,0 +1,42 @@
+/* AccordionItem/AccordionItem.css */
+
+.inner-content, .summary {
+	display: inline-block;
+}
+
+.inner-content {
+	color: black;
+}
+
+.section-title {
+	cursor: pointer;
+}
+
+.folding-panel {
+	display: block;
+	transition: all 0.2s ease-in;
+	line-height: 40px;
+}
+
+.active .section-title {
+	color: red;
+	border-color: transparent;
+	transition: border-color 0.2s ease-out;
+}
+
+.inactive .folding-panel {
+	transform-origin: 50% 0%;
+	transform: perspective(250px) rotateX(-90deg);
+	transition: all 0.4s ease-in-out;
+	height: 0;
+
+}
+
+.active .folding-panel {
+	transform: perspective(350px) rotateX(0deg);
+	transition: all 0.4s ease-in-out;
+	height: 50px;
+	line-height: 50px;
+	text-indent: 40px;
+}
+
