@@ -1,6 +1,7 @@
 // Accordion/Accordion.js
 
 import React from 'react';
+import './Accordion.css';
 import AccordionItem from '../AccordionItem/AccordionItem';
 
 export default class Accordion extends React.Component {

@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import './App.css';
 import UserContainer from '../UserContainer/UserContainer';
 import Accordion from '../Accordion/Accordion';
+import NewMessageForm from '../NewMessageForm/NewMessageForm';
 
 class App extends Component {
 	constructor(props) {
@@ -23,6 +24,7 @@ class App extends Component {
 		return(
 			<div>
 				<UserContainer/>	
+				<NewMessageForm/>
 			</div>
 		);
 	}

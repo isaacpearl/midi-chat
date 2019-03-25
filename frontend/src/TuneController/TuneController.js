@@ -22,7 +22,7 @@ export default class TuneController {
 	}
 
 	togglePlayback(tune) {
-		if (tune != this.tune) {
+		if (tune !== this.tune) {
 			this.tune = tune;
 			this.sequence = this.setNewSequence(tune, this.tuneSynth);
 			this.sequence.start("0");
