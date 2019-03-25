@@ -25,12 +25,11 @@ const getUserById = (request, response) => {
 const createUser = (request, response) => {
 	const { name, email } = request.body;
 
-	pool.pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
+	pool.pool.query('INSERT INTO users (name, email) VALUES ($1, $2) RETURNING id', [name, email], (error, results) => {
 		if (error) {
 			throw error;
 		}
-		//TODO: figure out why this returns undefined for results.insertId
-		response.status(201).send(`User added with ID: ${results.insertId}`);
+		response.status(201).send(`User added with ID: ${results.rows[0].id}`);
 	});
 };
 

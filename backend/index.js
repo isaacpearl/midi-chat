@@ -6,7 +6,7 @@ const app = express();
 const port = 3001;
 
 const user_queries = require('./app/queries/user_queries');
-const midi_queries = require('./app/queries/midi_queries');
+const tune_queries = require('./app/queries/tune_queries');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -27,9 +27,9 @@ app.post('/users', user_queries.createUser);
 app.put('/users/:id', user_queries.updateUser);
 app.delete('/users/:id', user_queries.deleteUser);
 
-app.get('/tunes', midi_queries.getTunes);
-app.get('/tunes/:id', midi_queries.getTuneById);
-
+app.get('/tunes', tune_queries.getTunes);
+app.get('/tunes/:id', tune_queries.getTuneById);
+app.post('/tunes', tune_queries.storeTune);
 app.listen(port, () => {
 	console.log(`midi chat backend running on port ${port}.`);
 });
