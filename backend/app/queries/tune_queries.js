@@ -32,6 +32,10 @@ const storeTune = (request, response) => {
 		
 		response.status(201).send(`Tune added with ID: ${results.rows[0].id}!`);
 	});
+};
+
+const updateTune = (request, response) => {
+	return 0; //TODO implement this
 
 };
 
@@ -52,5 +56,6 @@ module.exports = {
 	getTunes,
 	getTuneById,
 	storeTune,
+	updateTune,
 	sendTuneMessage
 };

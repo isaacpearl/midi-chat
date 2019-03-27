@@ -9,21 +9,29 @@ export default class NewMessageForm extends React.Component {
 		super(props);
 	
 		this.state = {
-			value: ""
+			recipient: "",
+			sender: "",
+			tuneNotes: "",
+			tuneName: ""
 		};
 
-		this.handleChange = this.handleChange.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	//TODO: handle multiple fields as in https://reactjs.org/docs/forms.html
-	handleChange(event) {
-		this.setState({value: event.target.value});
+	handleInputChange(event) {
+		const target = event.target;
+		const value = (target.type) === 'checkbox' ? target.checked : target.value;
+		const name = target.name;
+
+		this.setState({
+			[name]: value	
+		});
 	}
 
 	handleSubmit(event) {
-		alert("a value was submitted: " + this.state.value);
 		event.preventDefault();
+		//TODO: fetch API calls and create new message/note rows in database	
 	}
 
 	render() {
@@ -31,7 +39,23 @@ export default class NewMessageForm extends React.Component {
 			<form onSubmit={this.handleSubmit}>
 				<label>
 					Tune Name:
-					<input className ="tune-name" type="text" value={this.state.value} onChange={this.handleChange} />
+					<input 
+						name="tuneName"
+						className="tune-name" 
+						type="text" 
+						value={this.state.tuneName} 
+						onChange={this.handleInputChange}
+					/>
+				</label>
+				<label>
+					Tune Notes:
+					<input
+						name="tuneNotes"
+						className="tune-notes"
+						type="text"
+						value={this.state.tuneNotes}
+						onChange={this.handleInputChange}
+					/>
 				</label>
 				<input type="submit" value="Submit" />
 			</form>

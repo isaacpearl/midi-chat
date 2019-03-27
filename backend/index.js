@@ -18,7 +18,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/',(request, response) => {
-	response.json({ info: 'Node.js, Express, and Postgres API' });
+	response.json({ info: 'MIDI-Chat API: Written in Node.js, Express, and Postgres' });
 });
 
 app.get('/users', user_queries.getUsers);
@@ -30,6 +30,9 @@ app.delete('/users/:id', user_queries.deleteUser);
 app.get('/tunes', tune_queries.getTunes);
 app.get('/tunes/:id', tune_queries.getTuneById);
 app.post('/tunes', tune_queries.storeTune);
+app.put('/tunes/:id', tune_queries.updateTune);
+app.post('/messages', tune_queries.sendTuneMessage);
+
 app.listen(port, () => {
 	console.log(`midi chat backend running on port ${port}.`);
 });
