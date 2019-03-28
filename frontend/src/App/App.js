@@ -23,7 +23,7 @@ class App extends Component {
 	render() {
 		return(
 			<div>
-				<UserContainer/>	
+				<UserContainer userId={9} />	
 				<NewMessageForm/>
 			</div>
 		);

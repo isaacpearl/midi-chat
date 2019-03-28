@@ -13,8 +13,7 @@ const getTunes = (request, response) => {
 
 const getTuneById = (request, response) => {
 	const id = parseInt(request.params.id);
-
-	pool.pool.query('SELECT * FROM tunes WHERE id = $1', [id], (error, results) => {
+	pool.pool.query('SELECT *  FROM tunes WHERE id = $1', [id], (error, results) => {
 		if (error) {
 			throw error;
 		}
