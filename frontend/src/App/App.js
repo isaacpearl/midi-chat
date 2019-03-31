@@ -24,6 +24,7 @@ class App extends Component {
 		return(
 			<div>
 				<UserContainer userId={9} />	
+				<UserContainer userId={10} />
 				<NewMessageForm/>
 			</div>
 		);

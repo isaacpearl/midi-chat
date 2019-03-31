@@ -9,18 +9,23 @@ export default class TunePlayer extends React.Component {
 		super(props);
 		
 		this.state = {
+			playing: false,
 			Controller: new TuneController(this.props.tune)
 		};
 	}
-		
-	componentDidMount() {
-		this.setState({Controller: new TuneController(this.props.tune) });	
+	
+	onClick = () => {
+		const { playing, Controller } = this.state;
+		this.setState((state) => ({
+			playing: !playing
+		}));
+		Controller.togglePlayback(this.props.tune, playing);
 	}
 
 	render() {	
 		return(
 			<div className="tune-player">
-				<button onClick={() => this.state.Controller.togglePlayback(this.props.tune)}>
+				<button onClick={this.onClick}>
 					Play Tune!
 				</button>
 			</div>

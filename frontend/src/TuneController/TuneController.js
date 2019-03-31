@@ -12,23 +12,29 @@ export default class TuneController {
 		this.tuneSynth = new Tone.Synth({oscillator: {type: "sine"}}).toMaster();
 		this.sequence = this.setNewSequence(this.tune, this.tuneSynth);	
 		Tone.Transport.bpm.value = 120;
+		Tone.Transport.start();
 	}
 
 	setNewSequence(tune, tuneSynth) {
 		return new Tone.Sequence
 			(function(time, note) {			
 					tuneSynth.triggerAttackRelease(note, "8n", time);
-			}, tune, "4n");
+			}, tune);
 	}
 
-	togglePlayback(tune) {
+	togglePlayback(tune, playing) {
 		if (tune !== this.tune) {
 			this.tune = tune;
 			this.sequence = this.setNewSequence(tune, this.tuneSynth);
-			this.sequence.start("0");
 		}
 		
-		Tone.Transport.toggle();
+		if (playing) {
+			this.sequence.stop();
+			console.log("stopped");
+		} else {
+			this.sequence.start('+0.1');
+			console.log('started');
+		};
 	}
 }
 
