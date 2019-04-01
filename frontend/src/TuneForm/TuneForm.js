@@ -1,16 +1,16 @@
-//UpdateTuneForm/UpdateTuneForm.js
+//TuneForm/TuneForm.js
 
 import React from 'react';
-import './UpdateTuneForm.css';
+import './TuneForm.css';
 
-export default class UpdateTuneForm extends React.Component {
+export default class TuneForm extends React.Component {
 	
 	constructor(props) {
 		super(props);
 	
 		this.state = {
-			tuneId: "",
 			tuneNotes: "",
+			recipient: "",
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -19,12 +19,18 @@ export default class UpdateTuneForm extends React.Component {
 
 	handleInputChange(event) {
 		const target = event.target;
-		const value = (target.type) === 'checkbox' ? target.checked : target.value;
+		const value = (target.type) === 'checkbox' ? target.checked : this.formatNoteInput(target.value);
 		const name = target.name;
+
+		debugger;	
 
 		this.setState({
 			[name]: value	
 		});
+	}
+
+	formatNoteInput(value) {
+		
 	}
 
 	handleSubmit(event) {
@@ -54,18 +60,20 @@ export default class UpdateTuneForm extends React.Component {
 	render() {
 		return(
 			<form onSubmit={this.handleSubmit}>
+				{!this.props.profileUpdate && 
 				<label>
-					Tune ID:
+					To: 
 					<input 
-						name="tuneId"
-						className="tune-id" 
-						type="number" 
-						value={this.state.tuneId} 
+						name="recipient"
+						className="recipient-field" 
+						type="string" 
+						value={this.state.recipient} 
 						onChange={this.handleInputChange}
 					/>
 				</label>
+				}
 				<label>
-					Tune Notes:
+					{(!this.props.profileUpdate) ? "Tune Notes: " : "Update signature tune: "}
 					<input
 						name="tuneNotes"
 						className="tune-notes"

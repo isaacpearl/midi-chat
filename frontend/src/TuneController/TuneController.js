@@ -32,7 +32,7 @@ export default class TuneController {
 			this.sequence.stop();
 			console.log("stopped");
 		} else {
-			this.sequence.start('+0.1');
+			this.sequence.start('+0.01');
 			console.log('started');
 		};
 	}

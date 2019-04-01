@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import './App.css';
 import UserContainer from '../UserContainer/UserContainer';
 import Accordion from '../Accordion/Accordion';
-import NewMessageForm from '../NewMessageForm/NewMessageForm';
+import TuneForm from '../TuneForm/TuneForm';
 
 class App extends Component {
 	constructor(props) {
@@ -25,7 +25,6 @@ class App extends Component {
 			<div>
 				<UserContainer userId={9} />	
 				<UserContainer userId={10} />
-				<NewMessageForm/>
 			</div>
 		);
 	}
