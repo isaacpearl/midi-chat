@@ -15,29 +15,18 @@ export default class TuneForm extends React.Component {
 
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.formatNoteInput = this.formatNoteInput.bind(this);
 	}
 
 	handleInputChange(event) {
 		const target = event.target;
-		const value = (target.type) === 'checkbox' ? target.checked : this.formatNoteInput(target.value);
+		const value = (target.type) === 'checkbox' ? target.checked : target.value;
 		const name = target.name;
-
-		debugger;	
-
+		
 		this.setState({
 			[name]: value	
 		});
 	}
-
-	formatNoteInput(value) {
-		
-	}
-
-	handleSubmit(event) {
-		event.preventDefault();
-		//TODO: fetch API calls and create new message/note rows in database	
-	}
-
 
 	postData(url = ``, data = {}) {
 		// Default options are marked with *
