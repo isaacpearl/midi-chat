@@ -9,23 +9,62 @@ export default class TuneForm extends React.Component {
 		super(props);
 	
 		this.state = {
-			tuneNotes: "",
-			recipient: "",
+			note_array: "",
+			recipient_id: "",
+			sender_id: this.props.userId
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.formatNoteInput = this.formatNoteInput.bind(this);
+		this.formatTuneInput = this.formatTuneInput.bind(this);
 	}
 
 	handleInputChange(event) {
 		const target = event.target;
 		const value = (target.type) === 'checkbox' ? target.checked : target.value;
 		const name = target.name;
-		
+
 		this.setState({
 			[name]: value	
 		});
+
+	}
+
+	//TODO: replace this with Animal Crossing-style town tune slider interface ASAP
+	formatTuneInput(input) {
+		return input.split(" ");
+	}
+
+	handleSubmit() {
+		//TODO: this is hacky, refactor
+		var newArray = this.formatTuneInput(this.state.note_array)
+		console.log(newArray);
+		if (this.props.updateTune) {
+			this.putData();
+		} else {
+			this.postData(`http://localhost:3001/tunes`, {note_array: newArray});
+			//			this.postData(`localhost:3001/messages`, this.state);
+		};
+		debugger;
+	}
+
+	putData(url = ``, data = {}) {
+		// Default options are marked with *
+		return fetch(url, {
+			method: "PUT", // *GET, POST, PUT, DELETE, etc.
+			mode: "cors", // no-cors, cors, *same-origin
+			cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: "same-origin", // include, *same-origin, omit
+			headers: {
+				"Content-Type": "application/json",
+				// "Content-Type": "application/x-www-form-urlencoded",
+			},
+			redirect: "follow", // manual, *follow, error
+			referrer: "no-referrer", // no-referrer, *client
+			body: JSON.stringify(data), // body data type must match "Content-Type" header
+		})
+			.then(response => response.json()); // parses JSON response into native Javascript objects 
+
 	}
 
 	postData(url = ``, data = {}) {
@@ -51,12 +90,12 @@ export default class TuneForm extends React.Component {
 			<form onSubmit={this.handleSubmit}>
 				{!this.props.profileUpdate && 
 				<label>
-					To: 
+					Send message to: 
 					<input 
-						name="recipient"
+						name="recipient_id"
 						className="recipient-field" 
 						type="string" 
-						value={this.state.recipient} 
+						value={this.state.recipient_id} 
 						onChange={this.handleInputChange}
 					/>
 				</label>
@@ -64,10 +103,10 @@ export default class TuneForm extends React.Component {
 				<label>
 					{(!this.props.profileUpdate) ? "Tune Notes: " : "Update signature tune: "}
 					<input
-						name="tuneNotes"
+						name="note_array"
 						className="tune-notes"
 						type="text"
-						value={this.state.tuneNotes}
+						value={this.state.note_array}
 						onChange={this.handleInputChange}
 					/>
 				</label>
