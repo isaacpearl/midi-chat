@@ -35,17 +35,16 @@ export default class TuneForm extends React.Component {
 		return input.split(" ");
 	}
 
-	handleSubmit() {
+	async handleSubmit(event) {
+		event.preventDefault();
 		//TODO: this is hacky, refactor
 		var newArray = this.formatTuneInput(this.state.note_array)
-		console.log(newArray);
-		if (this.props.updateTune) {
-			this.putData();
+		if (this.props.profileUpdate) {
+			await this.putData(`http://localhost:3001/tunes/${this.props.signatureTuneId}`, {note_array: newArray});
 		} else {
-			this.postData(`http://localhost:3001/tunes`, {note_array: newArray});
+			await this.postData(`http://localhost:3001/tunes`, {note_array: newArray});
 			//			this.postData(`localhost:3001/messages`, this.state);
 		};
-		debugger;
 	}
 
 	putData(url = ``, data = {}) {
@@ -63,7 +62,7 @@ export default class TuneForm extends React.Component {
 			referrer: "no-referrer", // no-referrer, *client
 			body: JSON.stringify(data), // body data type must match "Content-Type" header
 		})
-			.then(response => response.json()); // parses JSON response into native Javascript objects 
+			.then(response => response); // TODO: make it so this parses JSON response into native Javascript objects 
 
 	}
 
@@ -82,7 +81,7 @@ export default class TuneForm extends React.Component {
 			referrer: "no-referrer", // no-referrer, *client
 			body: JSON.stringify(data), // body data type must match "Content-Type" header
 		})
-			.then(response => response.json()); // parses JSON response into native Javascript objects 
+			.then(response => response); // TODO: make it so this parses JSON response into native Javascript objects 
 	}
 
 	render() {

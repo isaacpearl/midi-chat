@@ -12,7 +12,7 @@ export default function UserSmall(props) {
 		<div className="user-small">
 			<ProfilePicture avatar={props.user.avatar}/>
 			<UserInfo username={props.user.name} status={props.user.status}/>
-			<TunePlayer tune={props.tune}/>
+			<TunePlayer id={props.user.signature_tune} tune={props.tune}/>
 		</div>
 	);
 }

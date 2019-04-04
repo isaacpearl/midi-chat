@@ -1,5 +1,4 @@
 // TunePlayer/TunePlayer.js
-
 import React from 'react';
 import './TunePlayer.css';
 import TuneController from '../TuneController/TuneController.js';
@@ -24,11 +23,12 @@ export default class TunePlayer extends React.Component {
 
 	render() {	
 		return(
-			<div className="tune-player">
+			<div className={"tune-player" + (this.state.playing ? " playing" : " not-playing")}>
 				<button onClick={this.onClick}>
-					Play Tune!
+					{this.state.playing ? <i className="fas fa-pause"></i> : <i className="fas fa-play"></i>} Play Tune {this.props.id}!
 				</button>
 			</div>
 		);
 	}
 }
+

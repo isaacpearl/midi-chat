@@ -1,8 +1,9 @@
 /* UserSmall/UserSmall.css */
 
 .user-small {
-	max-width: 400px;
+	max-width: 600px;
 	min-width: 200px;
+	height: 50%;
 	display: grid;
 	grid-template-columns: 33% 33% 33%;
 	grid-template-rows: 1fr;

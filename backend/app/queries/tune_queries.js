@@ -34,9 +34,22 @@ const storeTune = (request, response) => {
 };
 
 const updateTune = (request, response) => {
-	return 0; //TODO implement this
+	const id = parseInt(request.params.id);
+	const { note_array } = request.body;
 
+	pool.pool.query(
+			'UPDATE tunes SET note_array = $1 WHERE id = $2', 
+			[note_array, id],
+			(error, results) => {
+				if(error) {
+					throw error;
+				}
+				//				response.status(200);
+					response.status(200).send(`tune modified with ID: ${id}`);
+			});
 };
+
+
 
 
 const sendTuneMessage = (request, response) => {
