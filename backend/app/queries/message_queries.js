@@ -1,4 +1,4 @@
-// queries/message_queries.ks
+// queries/message_queries.js
 
 const pool = require('../../config/pool');
 
@@ -40,7 +40,7 @@ const createMessage = (request, response) => {
 		if (error) {
 			throw error;
 		}
-		response.status(201).send(`Message added with ID: ${results.rows[0].id}`);
+		response.status(201).send(results.rows[0]);
 	});
 };
 

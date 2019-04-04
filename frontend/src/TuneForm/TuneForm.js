@@ -10,8 +10,8 @@ export default class TuneForm extends React.Component {
 	
 		this.state = {
 			note_array: "",
+			sender_id: this.props.userId,
 			recipient_id: "",
-			sender_id: this.props.userId
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -37,13 +37,12 @@ export default class TuneForm extends React.Component {
 
 	async handleSubmit(event) {
 		event.preventDefault();
-		//TODO: this is hacky, refactor
 		var newArray = this.formatTuneInput(this.state.note_array)
 		if (this.props.profileUpdate) {
 			await this.putData(`http://localhost:3001/tunes/${this.props.signatureTuneId}`, {note_array: newArray});
 		} else {
-			await this.postData(`http://localhost:3001/tunes`, {note_array: newArray});
-			//			this.postData(`localhost:3001/messages`, this.state);
+			var newTuneId = (await this.postData(`http://localhost:3001/tunes`, {note_array: newArray})).id;
+			this.postData(`http://localhost:3001/messages`, {sender_id: this.state.sender_id, recipient_id: this.state.recipient_id, tune_id: newTuneId});
 		};
 	}
 
@@ -62,8 +61,7 @@ export default class TuneForm extends React.Component {
 			referrer: "no-referrer", // no-referrer, *client
 			body: JSON.stringify(data), // body data type must match "Content-Type" header
 		})
-			.then(response => response); // TODO: make it so this parses JSON response into native Javascript objects 
-
+			.then(response => response.json())
 	}
 
 	postData(url = ``, data = {}) {
@@ -81,7 +79,7 @@ export default class TuneForm extends React.Component {
 			referrer: "no-referrer", // no-referrer, *client
 			body: JSON.stringify(data), // body data type must match "Content-Type" header
 		})
-			.then(response => response); // TODO: make it so this parses JSON response into native Javascript objects 
+			.then(response => response.json());
 	}
 
 	render() {

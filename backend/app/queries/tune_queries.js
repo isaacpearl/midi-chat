@@ -23,13 +23,14 @@ const getTuneById = (request, response) => {
 
 const storeTune = (request, response) => {
 	const { note_array, owner_id, title } = request.body;
-
 	pool.pool.query('INSERT INTO tunes (note_array, owner_id, title) VALUES ($1, $2, $3) RETURNING id', [note_array, owner_id, title], (error, results) => {
 		if (error) {
 			throw error;
+		} else {
+			console.log("database results are: ", results);
 		}
-		
-		response.status(201).send(`Tune added with ID: ${results.rows[0].id}!`);
+				
+		response.status(201).send(results.rows[0]);
 	});
 };
 
@@ -43,7 +44,7 @@ const updateTune = (request, response) => {
 			(error, results) => {
 				if(error) {
 					throw error;
-				}
+				} 
 				//				response.status(200);
 					response.status(200).send(`tune modified with ID: ${id}`);
 			});

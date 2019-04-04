@@ -11,6 +11,7 @@ const message_queries = require('./app/queries/message_queries');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
 //DELETE THIS IN PRODUCTION - this allows all CORS
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
