@@ -16,6 +16,7 @@ export default class TuneList extends React.Component {
 	render() {
 		return(
 			<div className="tune-list">
+				<span>All tunes:</span>
 				{this.props.tunes.map(
 					tune => <TunePlayer key={tune.id} id={tune.id} tune={tune.note_array}/>
 				)}

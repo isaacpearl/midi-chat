@@ -16,21 +16,30 @@ class App extends Component {
 			messages: [],
 		};
 	}
-	
-	componentDidMount() {
+
+	fetchApiCalls() {
 		fetch("http://localhost:3001/tunes")
 			.then(response => response.json())
 			.then(data => this.setState({tunes: data }))
 		fetch("http://localhost:3001/users")
 			.then(response => response.json())
 			.then(data => this.setState({users: data }))
+		fetch("http://localhost:3001/messages")
+			.then(response => response.json())
+			.then(data => this.setState({messages: data}));
+	
+	}
+
+	componentDidMount() {
+		this.fetchApiCalls();
 	}
 
 	render() {
+		console.log(this.state.messages);
 		return(
-			<div>
+			<div className = "app">
 				{this.state.users.map(
-					user => <UserContainer userObject={user} key={user.id} userId={user.id}/>
+					user => <UserContainer userObject={user} key={user.id} userId={user.id} tunes = {this.state.tunes}/>
 				)}
 				<TuneList tunes = {this.state.tunes}/>
 			</div>

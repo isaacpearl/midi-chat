@@ -21,6 +21,11 @@ const getTuneById = (request, response) => {
 	});
 };
 
+const getTunesByMultipleIds = (request, response) => {
+	console.log(request.params);
+	//TODO: implement this
+};
+
 const storeTune = (request, response) => {
 	const { note_array, owner_id, title } = request.body;
 	pool.pool.query('INSERT INTO tunes (note_array, owner_id, title) VALUES ($1, $2, $3) RETURNING id', [note_array, owner_id, title], (error, results) => {
@@ -39,14 +44,13 @@ const updateTune = (request, response) => {
 	const { note_array } = request.body;
 
 	pool.pool.query(
-			'UPDATE tunes SET note_array = $1 WHERE id = $2', 
+			'UPDATE tunes SET note_array = $1 WHERE id = $2 RETURNING id', 
 			[note_array, id],
 			(error, results) => {
 				if(error) {
 					throw error;
 				} 
-				//				response.status(200);
-					response.status(200).send(`tune modified with ID: ${id}`);
+				response.status(200).send(results.rows[0]);
 			});
 };
 

@@ -23,9 +23,8 @@ const getUserById = (request, response) => {
 };
 
 const createUser = (request, response) => {
-	const { name, email, avatar } = request.body;
-
-	pool.pool.query('INSERT INTO users (name, email, avatar) VALUES ($1, $2, $3) RETURNING id', [name, email, avatar], (error, results) => {
+	const { name, avatar } = request.body;
+	pool.pool.query('INSERT INTO users (name, avatar) VALUES ($1, $2)  RETURNING id', [name, avatar], (error, results) => {
 		if (error) {
 			throw error;
 		}
@@ -35,11 +34,11 @@ const createUser = (request, response) => {
 
 const updateUser = (request, response) => {
 	const id = parseInt(request.params.id);
-	const { name, email, avatar, signature_tune } = request.body;
+	const { name, avatar, signature_tune } = request.body;
 
 	pool.pool.query(
-			'UPDATE users SET name = $1, email = $2, avatar = $3, signature_tune = $4 WHERE id = $5', 
-			[name, email, avatar, signature_tune, id],
+			'UPDATE users SET name = $1, avatar = $2, signature_tune = $3 WHERE id = $4', 
+			[name, avatar, signature_tune, id],
 			(error, results) => {
 				if(error) {
 					throw error;

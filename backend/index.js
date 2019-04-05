@@ -37,7 +37,7 @@ app.put('/tunes/:id', tune_queries.updateTune);
 
 app.get('/messages', message_queries.getMessages);
 app.get('/messages/sender/:id', message_queries.getMessagesBySenderId);
-app.get('/messages/recipient:id', message_queries.getMessagesByRecipientId);
+app.get('/messages/recipient/:id', message_queries.getMessagesByRecipientId);
 app.post('/messages', message_queries.createMessage);
 
 

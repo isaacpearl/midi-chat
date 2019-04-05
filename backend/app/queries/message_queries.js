@@ -33,6 +33,10 @@ const getMessagesByRecipientId = (request, response) => {
 	});
 };
 
+const getTunesByRecipientId = (request, response) => {
+	const id = parseInt(request.params.id);
+};
+
 const createMessage = (request, response) => {
 	const { sender_id, recipient_id, tune_id } = request.body;
 

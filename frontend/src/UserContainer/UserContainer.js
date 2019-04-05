@@ -4,13 +4,16 @@ import React from 'react';
 import './UserContainer.css';
 import UserSmall from '../UserSmall/UserSmall'
 import TuneForm from '../TuneForm/TuneForm';
+import TuneList from '../TuneList/TuneList';
 export default class UserContainer extends React.Component {
 
 	constructor(props) {
 		super(props);
 		
 		this.state = {
-			tune: [{}]
+			tune: [{}],
+			receivedTuneIds: [],
+			inbox: []
 		};
 	}
 
@@ -21,11 +24,20 @@ export default class UserContainer extends React.Component {
 			.then(data => this.setState({tune: data }))
 	}
 
+	getReceivedTunes() {
+		var inboxUrl = 'http://localhost:3001/messages/recipient/' + this.props.userObject.id;
+		fetch(inboxUrl)
+			.then(response => response.json())
+			.then(data => data[0] ? this.state.receivedTuneIds.push(data[0].tune_id) : 0);
+	}
+
 	componentDidMount(){ 
 		this.getSignatureTune();
+		this.getReceivedTunes();
 	}
 
 	render() {
+		console.log(this.state.receivedTuneIds);
 		return (
 			<div className="user-container">
 				<UserSmall user={this.props.userObject} tune={this.state.tune[0].note_array}/>
