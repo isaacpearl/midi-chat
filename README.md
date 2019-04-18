@@ -1,6 +1,6 @@
 # MIDI-Chat
 
-MIDI-Chat is a full-stack web app (PostgreSQL, Express.js, Node.js, Tone.js, React.js) I built during my batch at The Recurse Center (recurse.com) to learn more about web development and app architecture. It's a simple messaging app where users can send/receive musical messages, and set a playable signature tune for their profile (a sort of "musical away message").
+MIDI-Chat is a full-stack web app (PostgreSQL, Express.js, Node.js, Tone.js, React.js) I built during my batch at [The Recurse Center](https://www.recurse.com/) to learn more about web development and app architecture. It's a simple messaging app where users can send/receive musical messages, and set a playable signature tune for their profile (a sort of "musical away message").
 
 ![midi-chat screenshot](http://portfolio.isaacpearl.com/img/Screen%20Shot%202019-04-18%20at%203.10.14%20PM.png)
 
