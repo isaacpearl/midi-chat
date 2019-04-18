@@ -38,7 +38,7 @@ id (unique) | sender_id (id of sender) | recipient_id (id of recipient) | tune_i
 ## TODO
 So far, this project has been a great learning experience, but there are some obvious TODOs:
 * User "inboxes"
-  * Currently, all tunes are simply displayed in a single list. The final step in implementing the app's core functionality is to render a TuneList for each individual UserContainer that retrieves all tunes where there exists a tune_message with the current user's id as recipient_id
+  * Currently, all tunes are simply displayed in a single list. The final step in implementing the app's core functionality is to render a TuneList within each UserContainer that retrieves all the tunes where there exists a corresponding tune_message with the current user's id as recipient_id
 * Re-render components after submitting forms
   * Right now, the page has to be manually refreshed to see changes. To have components automatically update after data is pushed to the backend, the App component needs to pass a rerender() function for its children to call after submitting data 
 * User registration/switching
