@@ -44,6 +44,11 @@ export default class TuneForm extends React.Component {
 			var newTuneId = (await this.postData(`http://localhost:3001/tunes`, {note_array: newArray})).id;
 			this.postData(`http://localhost:3001/messages`, {sender_id: this.state.sender_id, recipient_id: this.state.recipient_id, tune_id: newTuneId});
 		};
+	//one option: pass in reFetch() method from app or userContainer to rerender
+	//another production-y option: no reFetch(), pass this a function that lets us update state of app or userContainer and 
+	//set state using the returned data from API calls
+	//one more optimistic option: in this function, use data from this.state.notearray to update state client-side (pass in a function that 
+	//updates app or userContainer with the user inputted notearray)
 	}
 
 	putData(url = ``, data = {}) {
