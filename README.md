@@ -46,7 +46,7 @@ So far, this project has been a great learning experience, but there are some ob
 * Fully fleshed out CSS
   * The look & feel of this demo is very rough, and I want to spend more time making this app actually look good.
 * Intuitive note input
-  * The current method of inputting notes (manually typing individual space-separated note names) was good for making sure my backend was working, but it's musically unintuitive. I want to experiment with [slider-based](https://www.youtube.com/watch?v=McRUT4Bq5GA) and performance-based interfaces for recording tunes.
+  * The current method of inputting notes (manually typing individual space-separated note names) was good for making sure my backend was working, but it's musically unintuitive. I want to experiment with [slider-based](https://animalcrossing.fandom.com/wiki/Town_Tune) and performance-based interfaces for recording tunes.
 * MIDI functionality
   * In the future, I would really like to follow through on my original idea and have this app represent tunes as MIDI files.
 * Deploy!
