@@ -8,7 +8,7 @@ MIDI-Chat is a full-stack web app (PostgreSQL, Express.js, Node.js, Tone.js, Rea
 
 The top-level React component [App.js](https://github.com/isaacpearl/midi-chat/blob/master/frontend/src/App/App.js) renders a UserContainer component for each user in the database, and then renders a TuneList component, which is currently used to render TunePlayer components for every tune in the database's "tunes" table. 
 
-UserContainer components are responsible for retrieving and displaying a user's username, avatar image, and signature tune. UserContainer also renders forms that allow a given user to update their signature tune or send a tune message to another user. 
+UserContainer components contain a UserSmall component (this is responsible for retrieving and displaying a user's username, avatar image, and signature tune), and two TuneForm components that allow a given user to update their signature tune or send a tune message to another user, respectively. 
 
 TunePlayer components display playback status, tune id, and use a vanilla JavaScript class [TuneController](https://github.com/isaacpearl/midi-chat/blob/master/frontend/src/TuneController/TuneController.js) which initializes a simple Tone.js synthesizer, creates a musical sequence from its input (array of notes), and handles playback commands.
 
